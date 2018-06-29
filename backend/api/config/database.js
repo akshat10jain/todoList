@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
-
-var uri = 'mongodb://localhost:27017/todoooo';
+const key=require('./keys')
+var uri = key.mongoURI;
 mongoose.connect(uri, function(err, res) {
     if (err) {
         console.log('Error connecting to MongoDB.')

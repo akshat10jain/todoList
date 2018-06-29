@@ -103,6 +103,8 @@ class TodoContainer extends Component {
         }
 
         const response = await fetch('/api/gettasks/', request);
+
+        console.log(response);
         const body = await response.json();
         return body;
     }

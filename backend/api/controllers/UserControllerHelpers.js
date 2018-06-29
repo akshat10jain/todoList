@@ -1,7 +1,7 @@
 const User = require('../models/User');
 
 const nodemailer=require('nodemailer')
-const config =require('../config/settings')
+
 
 //add task
 module.exports.addToUserTasks = function(user, taskObj) {

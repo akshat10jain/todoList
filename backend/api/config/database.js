@@ -1,9 +1,7 @@
-"use strict"
-require('dotenv').load();
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
-var uri = process.env.MONGODB_URI;
+var uri = 'mongodb://localhost:27017/todoooo';
 mongoose.connect(uri, function(err, res) {
     if (err) {
         console.log('Error connecting to MongoDB.')

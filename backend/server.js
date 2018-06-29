@@ -1,5 +1,3 @@
-"use strict"
-
 // Dependencies
 const express = require('express');
 const http = require('http');
@@ -26,7 +24,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(cookieParser());
 
-// Setting up a session for cookies (can be switched to JwT later)
+// Setting up a session for cookies 
 app.use(session({
     secret: '\'' + process.env.SESSION_SECRET + '\'',
     resave: true,
@@ -48,6 +46,7 @@ app.use(cors());
 // Add our routes
 app.use('/api', routes);
 
+//Set up database
 const mongoDB = require('./api/config/database')
 
 // catch 404 and forward to error handler
@@ -78,3 +77,5 @@ server.listen(process.env.PORT || 8080, () => {
 module.exports = {
     server: server
 }
+
+

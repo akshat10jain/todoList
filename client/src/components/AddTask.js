@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import DateTimePicker from 'react-datetime-picker';
+import DatePicker from 'react-date-picker';
+import classnames from 'classnames'
 import CategoryPicker from './CategoryPicker'
 
 require('../static/css/AddTask.css')
@@ -12,7 +13,7 @@ class AddTask extends Component {
         super(props)
 
         this.state = {
-            name: 'A name for your task',
+            name: '',
             date: new Date(),
             category: ''
         }
@@ -69,22 +70,65 @@ class AddTask extends Component {
 
     render() {
         return (
-            <div className="addTaskBox">
+        //     <div className="row">
+        //     <div className="col-sm-8 col-sm-offset-2 text-center">
+        //       <form>
+        //          <div className="form-group">
+        //             <input type="text" className="form-control input-lg text-center" 
+        //              style={{marginTop:'50px'}} 
+        //              onChange={this.updateName}
+        //              value={this.state.name}
+        //             autofocus placeholder="I want to buy a puppy that will love me forever"/>
+        //           </div>
+        //           <button type="submit" className="btn btn-primary btn-lg" 
+        //           style={{backgroundColor:'rgb(255, 64, 129) !important',
+        //           borderColor:'rgb(255, 64, 129) !important',
+        //          color:'#fff !important',
+        //          marginTop:'50px'
+        //         }}
+        //            onClick={this.updateTaskList}>Add</button>
+        //       </form>
+        //      </div>
+        //   </div>
+          <div className="row">
+          <div className="col-sm-8 col-sm-offset-2 text-center">
+            <div className="addTaskBox" style={{  border:'1px solid red !important' }}>
+             
+            <label className="control-label" style={{fontSize:'2.5rem',fontWeight:'400'}}>Enter Your Task</label>
                 <input
                     type="text"
+                    className="form-control input-lg text-center"
                     value={this.state.name}
                     onChange={this.updateName}
+                    style={{marginTop:'30px'}} 
+                     onChange={this.updateName}
+                     value={this.state.name}
+                    autoFocus placeholder="I want to buy a puppy that will love me forever"
                 />
                 <br/>
-                <DateTimePicker
+               
+                <DatePicker
                     value={this.state.date}
                     onChange={this.updateDate}
+                
                 />
                 <br/>
-                <CategoryPicker
+                {/* <CategoryPicker
                     updateCategory={this.updateCategory}
-                />
-                <button onClick={this.updateTaskList}> Add Task </button>
+                /> */}
+                <div className={classnames('form-group', 'signupButtons')} >
+                <button onClick={this.updateTaskList} 
+                className="btn btn-primary btn-lg"
+                
+                style={{backgroundColor:'rgb(255, 64, 129) !important',
+                borderColor:'rgb(255, 64, 129) !important',
+                 color:'#fff !important',
+                  marginTop:'50px'}}
+                > Add Task </button>
+                </div>
+         
+         </div>
+         </div>
             </div>
         )
     }

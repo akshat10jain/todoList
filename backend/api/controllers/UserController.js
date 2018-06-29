@@ -1,6 +1,8 @@
 const User = require('../models/User');
+
 const UserControllerHelpers = require('./UserControllerHelpers');
 const passport = require('passport');
+
 
 module.exports.register = function(req, res, next) {
     User.register(new User({ 
@@ -51,6 +53,7 @@ module.exports.addCategory = function(req, res, next) {
 
 module.exports.createTask = function (req, res, next) {
     UserControllerHelpers.addToUserTasks(req.user, req.body);
+    
     res.sendStatus(200);
 }
 

@@ -106,7 +106,7 @@ class TodoContainer extends Component {
         const body = await response.json();
         return body;
     }
-
+    
     getCompletedTasks = async () => {
         const request = {
             credentials: 'include',
@@ -142,18 +142,43 @@ class TodoContainer extends Component {
 
         return (
             <div>
+                 <button onClick={this.logout} 
+                className="btn btn-primary btn-lg" 
+                style={{ backgroundColor: 'rgb(0, 188, 212) !important',
+                color:'#fff !important',
+                marginBottom:'10px',
+                borderColor:'rgb(0, 188, 212) !important',
+                marginLeft:'20px',
+                marginRight:'10px',
+                borderRadius:'5px',
+                marginTop:'50px',
+            
+                }}
+                > Logout </button>
+                
 
                 {this.state.showAddTask ? 
                 <AddTask refresh={this.refresh} /> : 
-                <button onClick={this.newTask}> New Task </button>}
+                <button onClick={this.newTask} className="btn btn-primary btn-lg" 
+                style={{ 
+                backgroundColor: 'rgb(0, 188, 212) !important',
+                color:'#fff !important',
+                marginBottom:'10px',
+                borderColor:'rgb(0, 188, 212) !important',
+                marginLeft:'10px',
+                marginRight:'10px',
+                borderRadius:'5px',
+                marginTop:'50px'
+                }} 
+                > New Task </button>}
 
-                <h3>Your Tasks</h3>
+                <h1 style={{textAlign:'center',fontSize:'2.5rem',fontWeight:'400'}}>Your Tasks</h1>
                 <TaskList tasks={this.state.tasks} toggleCheckbox={this.completeTask} isCompleted={false} deleteTask={this.deleteTask} />
-                <h3>Completed Tasks</h3>
+                <h1 style={{textAlign:'center',fontSize:'2.5rem',fontWeight:'400'}}>Completed Tasks</h1>
                 <TaskList tasks={this.state.completedTasks} toggleCheckbox={this.uncompleteTask} isCompleted={true} deleteTask={this.deleteTask} />
 
-                <button onClick={this.logout}> Logout </button>
-                <button onClick={this.refresh}> Refresh </button>
+               
+                {/* <button onClick={this.refresh} > Refresh </button> */}
             </div>
         )
     }

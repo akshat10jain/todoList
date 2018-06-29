@@ -1,4 +1,3 @@
-"use strict"
 
 const express = require('express');
 const passport = require('passport');
@@ -29,9 +28,5 @@ router.get('/getcompletedtasks', Auth.loggedIn, UserController.getCompletedTaskA
 router.post('/addcategory', Auth.loggedIn, UserController.addCategory);
 router.get('/getcategories', Auth.loggedIn, UserController.getCategoryArray);
 
-// For rendering React app in heroku
-router.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname + '../../client/build/index.html'));
-});
 
 module.exports = router;

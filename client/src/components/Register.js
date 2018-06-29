@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 
@@ -110,25 +111,55 @@ class Register extends Component {
 
     render() {
         return (
-            <div>
+            <div className="wrapper">
                 <form onSubmit={this.registerRequest}>
-                    <label>
-                        Username:
-                        <input type="text" value={this.state.username} onChange={this.onUsernameChange} /><br />
-                        Password:
-                        <input type="password" value={this.state.password} onChange={this.onPasswordChange} /><br />
-                        Retype Password:
-                        <input type="password" value={this.state.verifyPassword} onChange={this.onVerifyPasswordChange} /><br />
-                        Email:
-                        <input type="text" value={this.state.email} onChange={this.onEmailChange} /><br />
-                        First Name:
-                        <input type="text" value={this.state.first} onChange={this.onFirstChange} /><br />
-                        Last Name:
-                        <input type="text" value={this.state.last} onChange={this.onLastChange} /><br />
-                    </label>
-                    <input type="submit" value="Sign Up" />
+                <h1>Join our community</h1>
+
+                <div className="form-group">
+                    <label className="control-label">First Name</label>
+                    <input type="text" value={this.state.first} placeholder="Enter Firstname" 
+                    name="firstname" className="form-control" onChange={this.onFirstChange} required />
+
+                </div>
+                <div className="form-group">
+                    <label className="control-label">Last Name</label>
+                    <input type="text" value={this.state.last} placeholder="Enter Lastname" 
+                    name="lastname" className="form-control" onChange={this.onLastChange} required />
+
+                </div>
+                <div className="form-group">
+                    <label className="control-label">Email</label>
+                    <input type="text" value={this.state.email} placeholder="Enter email" 
+                    name="email" className="form-control" onChange={this.onEmailChange} required />
+
+                </div>
+                <div className="form-group">
+                    <label className="control-label">Username</label>
+                    <input type="text" value={this.state.username} placeholder="Enter username" 
+                    name="username" className="form-control" onChange={this.onUsernameChange} required />
+
+                </div>
+                <div className="form-group">
+                    <label className="control-label">Password</label>
+                    <input type="text" value={this.state.password} placeholder="Enter password" 
+                    name="password" className="form-control" onChange={this.onPasswordChange} required />
+
+                </div>
+                <div className="form-group">
+                    <label className="control-label">Confirm Password</label>
+                    <input type="text" value={this.state.verifyPassword} placeholder="Enter confirm password" 
+                    name="confirmpassword" className="form-control" onChange={this.onVerifyPasswordChange} required />
+
+                </div>
+                <div className={classnames('form-group', 'signupButtons')} >
+                    <button disabled={this.state.isLoading} className="btn btn-primary btn-lg">
+                        Sign up
+              </button>
+
+                </div>
+                   
                 </form>
-                <ToastContainer />
+              
             </div>
         );
     }

@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom'
+import classnames from 'classnames'
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
-
+import './Login.css'
 /*
 A component for logging in with the inputted username and password.
 */
@@ -53,7 +54,7 @@ class Login extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.loginRequest}>
+                {/* <form onSubmit={this.loginRequest}>
                     <label>
                         Username:
                         <input type="text" value={this.state.username} onChange={this.onUsernameChange} /><br/>
@@ -63,7 +64,31 @@ class Login extends Component {
                     <input type="submit" value="Login" />
                 </form>
                 <Link to='/register'>Sign Up Here! </Link>
-                <ToastContainer />
+                <ToastContainer /> */}
+
+                <div className="wrapper">
+             <form onSubmit={this.loginRequest}>
+             <h1>Login</h1>
+                 <div className="form-group">
+                    <label className="control-label">Username</label>
+                    <input type="text" value={this.state.username} placeholder="Enter Username" 
+                    name="username" className="form-control" onChange={this.onUsernameChange} required/>
+
+                </div>
+                <div className="form-group">
+                    <label className="control-label">Password</label>
+                    <input type="password" value={this.state.password} placeholder="Enter password" 
+                    name="password" className="form-control" onChange={this.onPasswordChange} required />
+
+                </div>
+                <div className={classnames('form-group', 'signupButtons')}>
+                    <button className="btn btn-primary btn-lg" disabled={this.state.isLoading}>
+                        Login
+              </button>
+                 </div>
+                 <Link to='/register' className="regx">Sign Up Here! </Link>
+                 </form>
+                 </div>
             </div>
         );
     }
